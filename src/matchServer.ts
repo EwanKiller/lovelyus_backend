@@ -2,7 +2,7 @@ import { MatchServer } from "./MatchServer/MatchServer";
 
 // 环境变量配置
 // 程序运行的端口
-const port = parseInt('3000');
+const port = parseInt(process.env['MATCH_SERVER_PORT'] || '3000');
 
 export const matchServer = new MatchServer({
     port: port

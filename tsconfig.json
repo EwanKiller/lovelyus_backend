@@ -5,7 +5,7 @@
     ],
     "module": "commonjs",
     "target": "es2018",
-    "outDir": "lovelyus",
+    "outDir": "dist",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,

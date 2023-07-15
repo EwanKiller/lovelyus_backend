@@ -41,7 +41,7 @@ const tsrpcConf: TsrpcConfig = {
         autoProto: true,        // Auto generate proto before build
         autoSync: true,         // Auto sync before build
         autoApi: true,          // Auto generate API before build
-        outDir: 'lovelyus',         // Clean this dir before build
+        outDir: 'dist',         // Clean this dir before build
     }
 }
 export default tsrpcConf;

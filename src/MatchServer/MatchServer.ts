@@ -8,6 +8,7 @@ import { ReqStartMatch, ResStartMatch } from "../shared/protocols/matchServer/Pt
 import { MsgUpdateRoomState } from "../shared/protocols/roomServer/admin/MsgUpdateRoomState";
 import { serviceProto } from "../shared/protocols/serviceProto_matchServer";
 import { serviceProto as serviceProto_roomServer, ServiceType as ServiceType_Room } from "../shared/protocols/serviceProto_roomServer";
+import { readFileSync } from "fs";
 
 export interface MatchServerOptions {
     port: number
@@ -16,7 +17,11 @@ export class MatchServer {
     readonly server = new HttpServer(serviceProto, {
         port: this.options.port,
         // Remove this to use binary mode (remove from the client too)
-        json: true
+        json: true,
+        https: {
+            key: readFileSync('/home/ewan/nginx/https/thisewan.cn_nginx/thisewan.cn.key'),
+            cert: readFileSync('/home/ewan/nginx/https/thisewan.cn_nginx/thisewan.cn_bundle.crt')
+        }
     });
     readonly logger = this.server.logger;
 

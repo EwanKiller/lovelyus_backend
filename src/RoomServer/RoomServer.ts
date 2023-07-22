@@ -9,6 +9,7 @@ import { UserInfo } from "../shared/types/UserInfo";
 import { useCleanConn } from "./models/flows/useCleanConn";
 import { useSsoWs } from "./models/flows/useSsoWs";
 import { Room } from "./models/Room";
+import { readFileSync } from "fs";
 
 export interface RoomServerOptions {
     port: number,
@@ -21,7 +22,11 @@ export class RoomServer {
         port: this.options.port,
         // Remove this to use binary mode (remove from the client too)
         json: true,
-        logMsg: false
+        logMsg: false,
+        wss: {
+            key: readFileSync('/home/ewan/nginx/https/thisewan.cn_nginx/thisewan.cn.key'),
+            cert: readFileSync('/home/ewan/nginx/https/thisewan.cn_nginx/thisewan.cn_bundle.crt')
+        }
     });
     readonly logger = this.server.logger;
 
